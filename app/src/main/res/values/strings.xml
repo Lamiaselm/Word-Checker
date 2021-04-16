@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">EXO3-TP2</string>
+    <string name="apprendre">Apprendre le vocabulaire d’une langue</string>
+    <string name="message1">Entrez un mot de longueur : %1$d </string>
+    <string name="score">Score : %2$d </string>
+
+
+
+</resources>
