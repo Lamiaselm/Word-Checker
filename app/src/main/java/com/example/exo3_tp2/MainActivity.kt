@@ -36,7 +36,10 @@ class MainActivity : AppCompatActivity() {
         val listMots: MutableList<String> = mutableListOf("Web","PHP","JAVA","Noha","Lamia","JUnit","Japan","Kotlin","Flower")
         /* Liste des longueurs des mots */
         val listLength: MutableList<Int> = mutableListOf()
+        val scoreView = findViewById <TextView>(R.id.score)
         var score=0
+        scoreView.setText(" $score")
+
         for (mot in listMots)
         {
             if (!(listLength.contains(mot.length)))
@@ -68,7 +71,8 @@ class MainActivity : AppCompatActivity() {
                     println("le mot choisi aleatoirement est : $result")
                     if (result == inputValue)
                     {
-                        score += 5
+                        scoreView.setText(" $score+=5")
+
                         println("*** BRAVO ! votre score est augmente de 5, votre score est a  : $score ***")
                     }
                     else
