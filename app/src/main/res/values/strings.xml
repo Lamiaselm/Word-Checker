@@ -1,8 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">EXO3-TP2</string>
     <string name="apprendre">Apprendre le vocabulaire d’une langue</string>
-    <string name="message1">Entrez un mot de longueur : %1$d </string>
+    <string name="random_n">Entrez un mot de longueur : </string>
     <string name="score">Score : %2$d </string>
+    <string name="choisi">Le mot choisi est : </string>
+
     <string name="check">CHECK </string>
     <string name="genere">Mot choisi : %3$s  </string>
 
