@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
 
 
         val listMots: MutableList<String> = mutableListOf("Web","PHP","JAVA","Noha","Lamia","JUnit","Japan","Kotlin","Flower")
-        /* Liste des longueurs des mots */
+
         val listLength: MutableList<Int> = mutableListOf()
         val scoreView = findViewById <TextView>(R.id.score)
         var genere = findViewById <TextView>(R.id.mot_genere)
@@ -43,7 +43,8 @@ class MainActivity : AppCompatActivity() {
         val random_n = findViewById <TextView>(R.id.random_n)
         val check =findViewById<Button>(R.id.check)
         var score=0
-        scoreView.setText(" $score points ")
+        genere.setText("")
+        scoreView.setText("$score points ")
 
         for (mot in listMots)
         {
@@ -73,25 +74,31 @@ class MainActivity : AppCompatActivity() {
                 }
                 else
                 {
-                    var result = getRandomWord(listMots,n)
+                    val result = getRandomWord(listMots,n)
 
-                    genere.setText(" $result")
+                    genere.setText("$result")
 
                     if (result == inputValue)
                     {   score+=5
-                        scoreView.setText(" $score points")
+                        scoreView.setText("$score points")
 
                         Toast.makeText(getApplicationContext(), "BRAVO !!!! vous avez obtenu 5points", Toast.LENGTH_SHORT).show();
+
 
                     }
                     else
                     {
                         Toast.makeText(getApplicationContext(), "Echec !!!! Le mot saisi n’est pas le bon", Toast.LENGTH_SHORT).show();
+
                     }
                 }
+
             }
+
             n =  rand(start,end)
             random_n.setText(" $n")
+            input.getText().clear()
+
 
 
         }
