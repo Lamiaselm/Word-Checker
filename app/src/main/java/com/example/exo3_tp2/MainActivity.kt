@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 
 fun rand(start: Int, end: Int): Int {
@@ -37,8 +38,12 @@ class MainActivity : AppCompatActivity() {
         /* Liste des longueurs des mots */
         val listLength: MutableList<Int> = mutableListOf()
         val scoreView = findViewById <TextView>(R.id.score)
+        var genere = findViewById <TextView>(R.id.mot_genere)
+        val input = findViewById <EditText>(R.id.mot)
+        val random_n = findViewById <TextView>(R.id.random_n)
+        val check =findViewById<Button>(R.id.check)
         var score=0
-        scoreView.setText(" $score")
+        scoreView.setText(" $score points ")
 
         for (mot in listMots)
         {
@@ -50,37 +55,45 @@ class MainActivity : AppCompatActivity() {
         }
         val start = listLength.first()
         val end = listLength.last()
-        val n =  rand(start,end)
-        println("your number is $n")
-        val random_n = findViewById <TextView>(R.id.random_n)
+
+        var n =  rand(start,end)
+
+
         random_n.setText(" $n")
-        val check =findViewById<Button>(R.id.check)
+
         check.setOnClickListener { view ->
-            val input = findViewById <EditText>(R.id.mot)
+
+
             val inputValue = input.text.toString()
-            println("you intered $inputValue")
+
             if (inputValue != null) {
                 if((inputValue.length)!=n) {
-                    println("Erreur :  Vous avez pas entrer un mot de taille $n ")
+                    Toast.makeText(getApplicationContext(), "Erreur :  Vous avez pas entrer un mot de taille $n ", Toast.LENGTH_SHORT).show();
+
                 }
                 else
                 {
-                    val result = getRandomWord(listMots,n)
-                    val genere = findViewById <TextView>(R.id.mot_genere)
-                    genere.setText(" $result")
-                    println("le mot choisi aleatoirement est : $result")
-                    if (result == inputValue)
-                    {
-                        scoreView.setText(" $score+=5")
+                    var result = getRandomWord(listMots,n)
 
-                        println("*** BRAVO ! votre score est augmente de 5, votre score est a  : $score ***")
+                    genere.setText(" $result")
+
+                    if (result == inputValue)
+                    {   score+=5
+                        scoreView.setText(" $score points")
+
+                        Toast.makeText(getApplicationContext(), "BRAVO !!!! vous avez obtenu 5points", Toast.LENGTH_SHORT).show();
+
                     }
                     else
                     {
-                        println("*** ECHEC u.u votre score est a  : $score ***")
+                        Toast.makeText(getApplicationContext(), "Echec !!!! Le mot saisi n’est pas le bon", Toast.LENGTH_SHORT).show();
                     }
                 }
             }
+            n =  rand(start,end)
+            random_n.setText(" $n")
+
+
         }
 
     }
